@@ -1,0 +1,42 @@
+<ng-container *ngIf="!isLoading">
+	<div class="container-md ">
+		<div *ngIf="pros != []" class="row justify-content-center">
+			<div class=" col-12 my-1 text-center ">
+				<a routerLink="/admin/pros/create" class="btn btn-success mb-2" id="addBiscuitLink">Ajouter un
+					professionnel</a>
+			</div>
+			<table *ngIf="pros.length != 0" class="table  table-bordered table-hover mx-auto text-center">
+				<thead class="thead-dark">
+					<tr>
+						<th class="first-col" scope="col">Id</th>
+						<th scope="col">Email</th>
+						<th scope="col">Prénom</th>
+						<th scope="col">Nom</th>
+						<th scope="col">Tél</th>
+						<th scope="col">Siret</th>
+						<th scope="col">Editer</th>
+						<th scope="col">Supprimer</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let pro of pros">
+						<th class="first-col" scope="row">
+							{{pro.id}}</th>
+						<td>{{pro.email | titlecase}}</td>
+						<td>{{pro.firstname | titlecase}}</td>
+						<td>{{pro.lastname | titlecase}}</td>
+						<td>{{pro.tel}}</td>
+						<td>{{pro.siret }}</td>
+						<td><button class="btn">Editer</button>
+						</td>
+						<td><button class="btn">Supprimer</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div *ngIf="pros === null || pros.length === 0" class="my-3">
+			<div class="alert alert-danger text-center">Aucun pro à afficher !</div>
+		</div>
+	</div>
+</ng-container>

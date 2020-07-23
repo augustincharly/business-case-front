@@ -1,0 +1,36 @@
+<ng-container *ngIf="!isLoading">
+	<div class="container-md ">
+		<div *ngIf="garages != []" class="row justify-content-center">
+			<table *ngIf="garages.length != 0" class="table  table-bordered table-hover mx-auto text-center">
+				<thead class="thead-dark">
+					<tr>
+						<th class="first-col" scope="col">Id</th>
+						<th scope="col">Pro</th>
+						<th scope="col">Nom</th>
+						<th scope="col">Tél</th>
+						<th scope="col">Adresse</th>
+						<th scope="col">Editer</th>
+						<th scope="col">Supprimer</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let garage of garages">
+						<th class="first-col" scope="row">
+							{{garage.id}}</th>
+						<td>{{garage.professional.email }}</td>
+						<td>{{garage.name}}</td>
+						<td>{{garage.tel }}</td>
+						<td><span>{{garage.street }} {{garage.postcode}} {{garage.city}} {{garage.country}}</span></td>
+						<td><button class="btn">Editer</button>
+						</td>
+						<td><button class="btn">Supprimer</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div *ngIf="garages === null || garages.length === 0" class="my-3">
+			<div class="alert alert-danger text-center">Aucun pro à afficher !</div>
+		</div>
+	</div>
+</ng-container>

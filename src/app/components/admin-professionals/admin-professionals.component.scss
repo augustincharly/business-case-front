@@ -1,0 +1,14 @@
+table{
+   width: auto;
+}
+th[scope="row"]{
+    font-weight: normal;
+}
+th[scope="row"]:hover{
+    font-weight: 520;
+    font-style: italic;
+    cursor: pointer;
+}
+.btn{
+    border-radius: 0;
+}

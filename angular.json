@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "HB-Front-End": {
@@ -28,6 +28,8 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -92,6 +94,8 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +127,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "HB-Front-End"
+    }
+  },
+  "defaultProject": "HB-Front-End",
+  "cli": {
+    "analytics": "06fdce39-87a8-4c7d-8764-8b773c03560c"
+  }
 }
