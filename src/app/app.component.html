@@ -1,5 +1,5 @@
 <!-- nav -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-4 pl-4">
 	<button (click)=" isCollapsed=!isCollapsed" class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
 		aria-label="Toggle navigation">
@@ -7,12 +7,12 @@
 	</button>
 	<div class="collapse navbar-collapse text-center" id=" navbarTogglerDemo01" [collapse]="isCollapsed">
 		<a class="navbar-brand " routerLink='/'>Centre’Auto’Ccas</a>
-		<div class="navbar-nav">
-			<a class="nav-item nav-link" routerLink="/">Annonces</a>
-			<a class="nav-item nav-link ml-lg-auto" *ngIf="isPro()" routerLink="/professional/home">MonCompte</a>
-			<a class="nav-item nav-link ml-lg-auto" *ngIf="isAdmin()" routerLink="/admin/home">Administration</a>
-			<a class="nav-item nav-link ml-lg-auto" *ngIf="!currentUser" routerLink="/login">Login</a>
-			<a class="nav-item nav-link ml-lg-auto" *ngIf="currentUser" (click)="logout()">Logout</a>
+		<div class="navbar-nav ml-auto">
+			<a class="nav-item nav-link px-4" routerLink="/">Annonces</a>
+			<a class="nav-item nav-link ml-lg-auto px-4" *ngIf="isPro()" routerLink="/professional/home">MonCompte</a>
+			<a class="nav-item nav-link ml-lg-auto px-4" *ngIf="isAdmin()" routerLink="/admin/home">Administration</a>
+			<a class="nav-item nav-link ml-lg-auto px-4" *ngIf="!currentUser" routerLink="/login">Se connecter</a>
+			<a class="nav-item nav-link ml-lg-auto px-4" *ngIf="currentUser" (click)="logout()">Se déconnecter</a>
 		</div>
 	</div>
 </nav>
@@ -20,11 +20,9 @@
 <!-- main app container -->
 <div class="jumbotron">
 	<div class="container">
-		<div class="row">
-			<div class="col-sm-6 offset-sm-3">
-				<alert></alert>
-				<router-outlet></router-outlet>
-			</div>
-		</div>
+
+		<alert></alert>
+		<router-outlet></router-outlet>
+
 	</div>
 </div>

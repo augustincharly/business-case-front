@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Announce } from 'src/app/models/announce';
 import { AnnounceService } from 'src/app/services/announce.service';
 import { PublicService } from 'src/app/services/public.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,10 +14,11 @@ export class DashboardComponent implements OnInit {
   announces: Announce[];
   isLoading: boolean;
 
-  constructor(private publicService: PublicService) { }
+  constructor(private publicService: PublicService, private titleService: Title) { }
 
   ngOnInit(): void {
     this.refreshAnnounces();
+    this.titleService.setTitle('Liste des annonces');
   }
 
   refreshAnnounces() {

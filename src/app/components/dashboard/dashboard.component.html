@@ -6,13 +6,78 @@
 	</div>
 </ng-container>
 <ng-container *ngIf="!isLoading">
+	<div class="text-center mb-5">
+		<h1>Liste des annonces</h1>
+	</div>
+	<div class="container-md container-fluid card py-4 px-4 filters">
+		<form action="">
+			<div class="d-flex justify-content-between pb-5 text-center">
+				<div>
+					<div>
+						<label for="">Marque</label>
+					</div>
+
+					<select name="" id="">
+						<option value="exemple">Toutes</option>
+					</select>
+				</div>
+				<div>
+					<div>
+						<label for="">Carburant</label>
+					</div>
+					<select name="" id="">
+						<option value="exemple">Tous les carburant</option>
+					</select>
+				</div>
+				<div>
+					<div>
+						<label for="">Année</label>
+					</div>
+
+					<select name="" id="">
+						<option value="exemple">Toutes années</option>
+					</select>
+				</div>
+				<div>
+					<div>
+						<label for="">Kilométrage</label>
+					</div>
+
+					<select name="" id="">
+						<option value="exemple">Tous kilométrage</option>
+					</select>
+				</div>
+				<div>
+					<div>
+						<label for="">Prix</label>
+					</div>
+
+					<select name="" id="">
+						<option value="exemple">Tout prix</option>
+					</select>
+				</div>
+			</div>
+			<div class="py-5">
+				<div>
+					<div>
+						<label for="">Modèle</label>
+					</div>
+				</div>
+				<select name="brand" id="">
+					<option value="">Tous</option>
+				</select>
+			</div>
+			<div class="col-12 text-center">
+				<input type="submit" value="Filtrer" class="btn ">
+			</div>
+		</form>
+	</div>
 	<div class="container-md container-fluid">
 		<div *ngIf="announces != []" class="row d-flex">
 
-			<div class="col-12 mt-4">
-				<div class="row text-center">
-					<app-announce [announce]="announce" *ngFor="let announce of announces "
-						class="col-sm-6 col-lg-4 col-xl-3 text-center">
+			<div class="col-12 mt-4 ">
+				<div class="row">
+					<app-announce [announce]="announce" *ngFor="let announce of announces " class="col-sm-6">
 					</app-announce>
 				</div>
 			</div>
