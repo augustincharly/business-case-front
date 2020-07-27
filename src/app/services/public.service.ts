@@ -5,6 +5,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, retry } from 'rxjs/internal/operators';
 import { AuthService } from './auth.service';
 import { User } from '../models/user';
+import { Brand } from '../models/brand';
+import { Fuel } from '../models/fuel';
+import { Model } from '../models/model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +31,30 @@ export class PublicService {
 
   getAnnounces(): Observable<Announce[]> {
     return this.http.get<Announce[]>(this.apiUrl + '/announce', this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.handlError)
+      );
+  }
+
+  getBrands(): Observable<Brand[]> {
+    return this.http.get<Brand[]>(this.apiUrl + '/brand', this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.handlError)
+      );
+  }
+
+  getModels(idBrand): Observable<Model[]> {
+    return this.http.get<Model[]>(this.apiUrl + '/model/' + idBrand, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.handlError)
+      );
+  }
+
+  getFuels(): Observable<Fuel[]> {
+    return this.http.get<Fuel[]>(this.apiUrl + '/fuel', this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handlError)

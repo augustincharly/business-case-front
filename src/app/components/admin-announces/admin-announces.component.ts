@@ -27,4 +27,6 @@ export class AdminAnnouncesComponent implements OnInit {
       console.log(this.announces);
     });
   }
+
+
 }

@@ -14,61 +14,71 @@
 			<div class="d-flex justify-content-between pb-5 text-center">
 				<div>
 					<div>
-						<label for="">Marque</label>
+						<label for="brand">Marque</label>
 					</div>
 
-					<select name="" id="">
-						<option value="exemple">Toutes</option>
+					<select [(ngModel)]="filters['brand']" (change)="onBrandChange()" name="brand" id="brand">
+						<option value="all" selected>Toutes</option>
+						<option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</option>
+					</select>
+
+				</div>
+				<div>
+					<div>
+						<label for="fuel">Carburant</label>
+					</div>
+					<select [(ngModel)]="filters['fuel']" name="fuel" id="fuel">
+						<option value="all" selected>Tous les carburant</option>
+						<option *ngFor="let fuel of fuels" [value]="fuel.id">{{ fuel.type}}</option>
 					</select>
 				</div>
 				<div>
 					<div>
-						<label for="">Carburant</label>
+						<label for="year">Année</label>
 					</div>
-					<select name="" id="">
-						<option value="exemple">Tous les carburant</option>
+
+					<select [(ngModel)]="filters['year']" name="year" id="year">
+						<option value="all">Toutes années</option>
+						<option value="1980">1980-2000</option>
+						<option value="2000">après 2000</option>
 					</select>
 				</div>
 				<div>
 					<div>
-						<label for="">Année</label>
+						<label for="km">Kilométrage</label>
 					</div>
 
-					<select name="" id="">
-						<option value="exemple">Toutes années</option>
+					<select [(ngModel)]="filters['km']" name="km" id="km">
+						<option value="all">Tous kilométrage</option>
+						<option value="0-50000">0-50000</option>
+						<option value="50000">50000 et plus</option>
 					</select>
 				</div>
 				<div>
 					<div>
-						<label for="">Kilométrage</label>
+						<label for="price">Prix</label>
 					</div>
 
-					<select name="" id="">
-						<option value="exemple">Tous kilométrage</option>
-					</select>
-				</div>
-				<div>
-					<div>
-						<label for="">Prix</label>
-					</div>
-
-					<select name="" id="">
-						<option value="exemple">Tout prix</option>
+					<select [(ngModel)]="filters['price']" name="price" id="price">
+						<option value="all">Tout prix</option>
+						<option value="0-1000">moins de 1000</option>
+						<option value="1000">1000 ou plus</option>
 					</select>
 				</div>
 			</div>
-			<div class="py-5">
+			<div class="py-5" *ngIf="displayModels">
 				<div>
 					<div>
-						<label for="">Modèle</label>
+						<label for="model">Modèle</label>
 					</div>
 				</div>
-				<select name="brand" id="">
-					<option value="">Tous</option>
+				<select [(ngModel)]="filters['model']" name="model" id="model">
+					<option value="all">Tous</option>
+					<option value="model.name" *ngFor="let model of models">{{model.name}}</option>
 				</select>
 			</div>
 			<div class="col-12 text-center">
-				<input type="submit" value="Filtrer" class="btn ">
+				<input type="submit" value="Filtrer" class="btn " (click)="onFilter()">
 			</div>
 		</form>
 	</div>

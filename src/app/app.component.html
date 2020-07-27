@@ -6,9 +6,9 @@
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	<div class="collapse navbar-collapse text-center" id=" navbarTogglerDemo01" [collapse]="isCollapsed">
-		<a class="navbar-brand " routerLink='/'>Centre’Auto’Ccas</a>
+		<a class="navbar-brand " routerLink='/dashboard'>Centre’Auto’Ccas</a>
 		<div class="navbar-nav ml-auto">
-			<a class="nav-item nav-link px-4" routerLink="/">Annonces</a>
+			<a class="nav-item nav-link px-4" routerLink="/dashboard">Annonces</a>
 			<a class="nav-item nav-link ml-lg-auto px-4" *ngIf="isPro()" routerLink="/professional/home">MonCompte</a>
 			<a class="nav-item nav-link ml-lg-auto px-4" *ngIf="isAdmin()" routerLink="/admin/home">Administration</a>
 			<a class="nav-item nav-link ml-lg-auto px-4" *ngIf="!currentUser" routerLink="/login">Se connecter</a>
