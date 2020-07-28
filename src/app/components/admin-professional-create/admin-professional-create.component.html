@@ -50,7 +50,7 @@
 			<div *ngIf="!siret.valid" class="alert alert-danger">Veuillez saisir le numéro de SIRET</div>
 		</div>
 
-		<button routerLink='/admin/pros' class="btn btn-primary mt-3 ">Retourner à l'accueil</button>
+		<button routerLink='/admin/pros' class="btn btn-outline-primary mt-3 mr-2 ">Retourner à la liste</button>
 		<input id="submit-button" class="btn btn-success mt-3" type="submit" [disabled]="!userValidation.valid "
 			value=" Créer le Professionnel">
 

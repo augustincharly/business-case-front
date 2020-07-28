@@ -34,8 +34,10 @@ export class AdminProfessionalCreateComponent implements OnInit {
         },
           error => {
             this.alertService.error(error);
-            console.log(error);
           });
+      },
+      error => {
+        this.alertService.error(error);
       });
   }
 

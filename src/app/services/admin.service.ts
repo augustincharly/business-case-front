@@ -6,27 +6,31 @@ import { catchError, retry } from 'rxjs/internal/operators';
 import { Announce } from '../models/announce';
 import { Garage } from '../models/garage';
 import { User } from '../models/user';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
+  private currentUser: User;
   public announces: Announce[];
   public garages: Garage[];
   public users: User[];
   public pros: Professional[];
 
   apiUrl = 'http://localhost:8000/admin';
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest',
-      'X-AUTH-TOKEN': 'toto'
-    })
-  };
+  httpOptions = {};
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.authService.currentUser.subscribe(x => this.currentUser = x);
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-AUTH-TOKEN': this.currentUser.api_token
+      })
+    };
   }
 
   getAnnounces(): Observable<Announce[]> {
@@ -61,12 +65,12 @@ export class AdminService {
 
   createPro(newPro: Professional): Observable<string> {
     let proToSend = {
-      'user_id': newPro.user.id,
-      'firstname': newPro.firstname,
-      'lastname': newPro.lastname,
-      'email': newPro.email,
-      'tel': newPro.tel,
-      'siret': newPro.siret,
+      user_id: newPro.user.id,
+      firstname: newPro.firstname,
+      lastname: newPro.lastname,
+      email: newPro.email,
+      tel: newPro.tel,
+      siret: newPro.siret,
     }
 
     return this.http.post<string>(this.apiUrl + '/pro', proToSend, this.httpOptions).pipe(
